@@ -12,7 +12,6 @@ const usuarioReducer = createSlice({
   initialState,
   reducers: {
    adicionarUsuario: (state, action: PayloadAction<usuarioType>) => {
-    console.log(state)
     return action.payload;
    }
   }
