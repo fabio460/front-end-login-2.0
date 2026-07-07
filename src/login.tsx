@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { logarUsuarioApi } from './api/usuarioApi';
+import { Navigate, useNavigate } from 'react-router';
 
 // Interface para definir a estrutura dos dados do login
 interface LoginData {
@@ -15,6 +16,8 @@ interface AuthStatus {
 }
 
 export default function LoginPage(): React.JSX.Element {
+
+  const navigate = useNavigate()
   // Estado tipado para as credenciais do usuário
   const [loginData, setLoginData] = useState<LoginData>({
     email: '',
@@ -57,6 +60,7 @@ export default function LoginPage(): React.JSX.Element {
       
       // Armazene o token recebido no localStorage/Context se aplicável
       localStorage.setItem('token', data.token);
+      navigate("/")
 
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Erro ao realizar login';

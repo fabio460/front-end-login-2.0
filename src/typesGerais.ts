@@ -4,3 +4,7 @@ export type usuarioType = {
     email:string
     senha?:string
 }
+export type responseType = {
+    status:number
+    json():string | usuarioType
+}

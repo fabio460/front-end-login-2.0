@@ -1,24 +1,14 @@
-import { useEffect } from "react"
+
 import "./App.css"
-import { autenticarUsuarioApi } from "./api/usuarioApi"
-import LoginPage from "./login"
+import BtnDeslogar from "./btnDeslogar"
+import { useAppSelector } from "./redux/hooks"
 
 export const App = () => {
-  async function apiTeste() {
-    //const r = await listarUsuarioApi()
-    //const usuario =await r.json()
-    //const status = r.status
-    //console.log(status)
-    //console.log(usuario)
-    const auth = await autenticarUsuarioApi()
-    const res = await auth.json()
-    console.log(res)
-    console.log(auth.status)
-  }
-  useEffect(()=>{
-    apiTeste()
-  },[])
-  return <div>olaa
-    <LoginPage />
+  const usuarioLogado = useAppSelector(state=>state.usuario)
+  return <div>
+    <div>
+      bem vindo {usuarioLogado.nome}
+    </div>
+    <BtnDeslogar/>
   </div>
 }

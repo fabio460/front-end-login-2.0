@@ -1,4 +1,5 @@
 import { linkApi } from "."
+import { responseType } from "../typesGerais"
 
 export const listarUsuarioApi = () => {
     return fetch(linkApi+"usuario",{
@@ -31,7 +32,7 @@ export const logarUsuarioApi = (email:string, senha:string)=>{
 
 export const autenticarUsuarioApi = ()=>{
     const token = localStorage.getItem("token")
-    return fetch(linkApi+"autenticarusuario",{
+    const res:Promise<responseType> = fetch(linkApi+"autenticarusuario",{
         method:"POST",
         headers:{
             "Content-Type":"application/json",
@@ -40,4 +41,5 @@ export const autenticarUsuarioApi = ()=>{
     })
     .then(r=>r)
     .catch(err=>err)
+    return res
 }
