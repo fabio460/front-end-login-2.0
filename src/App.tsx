@@ -1,13 +1,13 @@
 import { useEffect } from "react"
 import "./App.css"
-import { autenticarUsuarioApi, listarUsuarioApi } from "./api/usuarioApi"
+import { autenticarUsuarioApi } from "./api/usuarioApi"
 import LoginPage from "./login"
 
 export const App = () => {
   async function apiTeste() {
-    const r = await listarUsuarioApi()
-    const usuario =await r.json()
-    const status = r.status
+    //const r = await listarUsuarioApi()
+    //const usuario =await r.json()
+    //const status = r.status
     //console.log(status)
     //console.log(usuario)
     const auth = await autenticarUsuarioApi()
