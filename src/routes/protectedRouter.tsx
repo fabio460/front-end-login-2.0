@@ -8,7 +8,6 @@ import { adicionarUsuario } from '../redux/usuarioReducer'
 
 export default function ProtectedRouter() {
   const [status, setStatus] = useState<"autenticado"|"não autenticado"|"aguardando">("aguardando")
-  const [usuario, setUsuario] = useState<usuarioType>()
   const dispatch =  useAppDispatch()
   
   async function HandleAutenticado() {

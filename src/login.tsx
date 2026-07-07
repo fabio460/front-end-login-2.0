@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { logarUsuarioApi } from './api/usuarioApi';
-import { Navigate, useNavigate } from 'react-router';
+import {useNavigate } from 'react-router';
 
 // Interface para definir a estrutura dos dados do login
 interface LoginData {
