@@ -7,7 +7,7 @@ export const App = () => {
   const usuarioLogado = useAppSelector(state=>state.usuario)
   return <div>
     <div>
-      bem vindo {usuarioLogado.nome}
+      bem vindo <h3>{usuarioLogado.nome}</h3>
     </div>
     <BtnDeslogar/>
   </div>

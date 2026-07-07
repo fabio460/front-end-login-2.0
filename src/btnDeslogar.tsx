@@ -5,6 +5,6 @@ export default function BtnDeslogar() {
     window.location.reload()
   }  
   return (
-    <button onClick={deslogar}>Deslogar</button>
+    <button onClick={deslogar}>Sair</button>
   )
 }

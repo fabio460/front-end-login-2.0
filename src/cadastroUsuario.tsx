@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { criarUsuarioApi } from './api/usuarioApi';
+import { NavLink } from 'react-router';
 
 // Interface para definir a estrutura dos dados do formulário
 interface FormData {
@@ -120,6 +121,8 @@ export default function RegisterPage(): React.JSX.Element {
           >
             {status.loading ? 'Cadastrando...' : 'Cadastrar'}
           </button>
+          <div>Já tem cadastrado? <NavLink to={"/login"}>clique aqui</NavLink></div>
+
         </form>
 
         {status.success && <p style={styles.successMessage}>Cadastro realizado com sucesso!</p>}

@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { logarUsuarioApi } from './api/usuarioApi';
-import {useNavigate } from 'react-router';
+import {Link, NavLink, useNavigate } from 'react-router';
 
 // Interface para definir a estrutura dos dados do login
 interface LoginData {
@@ -110,6 +110,7 @@ export default function LoginPage(): React.JSX.Element {
           >
             {status.loading ? 'Entrando...' : 'Entrar'}
           </button>
+          <div>Não é cadastrado? <NavLink to={"/cadastro"}>cadastre-se aqui</NavLink></div>
         </form>
 
         {status.success && <p style={styles.successMessage}>Login realizado com sucesso! Redirecionando...</p>}
