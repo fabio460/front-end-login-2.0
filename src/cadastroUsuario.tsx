@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { criarUsuarioApi } from './api/usuarioApi';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 
 // Interface para definir a estrutura dos dados do formulário
 interface FormData {
@@ -17,6 +17,8 @@ interface RequestStatus {
 }
 
 export default function RegisterPage(): React.JSX.Element {
+  const navigate = useNavigate()
+  const [responseApi, setResponseApi] = useState()
   // Estado tipado para o formulário
   const [formData, setFormData] = useState<FormData>({
     nome: '',
@@ -47,18 +49,26 @@ export default function RegisterPage(): React.JSX.Element {
 
     try {
       const response = await criarUsuarioApi(formData.nome, formData.email, formData.senha)
-
-      if (!response.ok) {
+      //const r = await response.json()
+      //console.log(r)
+      if (!response.ok) { 
         throw new Error('Falha ao realizar o cadastro. Tente novamente.');
       }
-
+      
       const data = await response.json();
       setStatus({ loading: false, error: null, success: true });
       
       // Limpa os campos tipados corretamente
       setFormData({ nome: '', email: '', senha: '' });
-      console.log('Sucesso:', data);
-
+    
+      setResponseApi(data)
+      if (data==="usuario criado com sucesso!") {
+        setStatus({ loading: true, error: null, success: true });
+        setTimeout(() => {        
+          navigate("/login")
+        }, 2000);
+      }
+      
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Erro desconhecido';
       setStatus({ loading: false, error: errorMessage, success: false });
@@ -125,7 +135,7 @@ export default function RegisterPage(): React.JSX.Element {
 
         </form>
 
-        {status.success && <p style={styles.successMessage}>Cadastro realizado com sucesso!</p>}
+        {status.success && <p style={styles.successMessage}>{responseApi}</p>}
         {status.error && <p style={styles.errorMessage}>{status.error}</p>}
       </div>
     </div>

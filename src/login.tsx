@@ -47,7 +47,7 @@ export default function LoginPage(): React.JSX.Element {
 
     try {
       const response:any = await logarUsuarioApi(loginData.email, loginData.senha)
-      console.log(response)
+      
       if (response?.status !== 200) {
         throw new Error('E-mail ou senha incorretos.');
       }

@@ -43,3 +43,14 @@ export const autenticarUsuarioApi = ()=>{
     .catch(err=>err)
     return res
 }
+
+export const deletarUsuarioApi = (id:string)=>{
+    console.log(id)
+    return fetch(linkApi+"deletarusuario",{
+        method:"DELETE",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({id:id})
+    })
+    .then(r=>r)
+    .catch(r=>r)
+}
