@@ -5,6 +5,7 @@ import { usuarioType } from '../typesGerais'
 import { autenticarUsuarioApi } from '../api/usuarioApi'
 import { useAppDispatch } from '../redux/hooks'
 import { adicionarUsuario } from '../redux/usuarioReducer'
+import Loading from '../loading'
 
 export default function ProtectedRouter() {
   const [status, setStatus] = useState<"autenticado"|"não autenticado"|"aguardando">("aguardando")
@@ -26,7 +27,7 @@ export default function ProtectedRouter() {
   },[])
   
   if (status === "aguardando") {
-    return <div>aguarde ...</div>
+    return <Loading/>
   }
   if (status === 'autenticado') {
     return <div>
